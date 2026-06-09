@@ -11,6 +11,30 @@ A sleek, high-performance, native macOS desktop client for downloading video and
 
 ---
 
+## 📦 Quick Start / Download (macOS)
+
+If you want to try TubeFlow immediately without installing Python, dependencies, or compiling the source code:
+
+👉 **[Download TubeFlow.dmg (macOS)](https://github.com/mfarivar/TubeFlow/raw/main/releases/TubeFlow.dmg)**
+
+1. Double-click the downloaded `TubeFlow.dmg` file to open the installer.
+2. Drag the **TubeFlow** icon into your **Applications** folder.
+3. Launch **TubeFlow** from your Applications directory.
+
+*Note: Since the app is compiled locally and not signed with an Apple Developer ID, macOS Gatekeeper may block launching it the first time. To bypass this, **Right-click (or Control-click) TubeFlow.app** in Finder, select **Open**, and click **Open** in the warning dialog. This registers a permanent security exception.*
+
+### 🖥️ Windows & Linux Users
+
+Because desktop application packages (like `.app` bundles, `.exe` installers, or `.deb` packages) are platform-specific and must be compiled on their respective host operating systems, this pre-packaged installer is only available for **macOS**.
+
+If you are on **Windows** or **Linux (e.g. Ubuntu)**, you can still easily run the app from source in under a minute:
+1. Ensure you have **Python 3.10+** and **FFmpeg** installed.
+2. Clone this repo: `git clone https://github.com/mfarivar/TubeFlow.git`
+3. Run `pip install -r requirements.txt`
+4. Execute `python app.py` to launch the application.
+
+---
+
 ## ⚡ Key Features
 
 * **🚀 Zero-Click Clipboard Monitoring** — Automatically detects video links in your clipboard when the window gains focus, parsing them instantly without requiring you to manually paste.

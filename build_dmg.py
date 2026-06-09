@@ -5,7 +5,7 @@ import subprocess
 def create_dmg():
     workspace_dir = os.path.dirname(os.path.abspath(__file__))
     dist_dir = os.path.join(workspace_dir, "dist")
-    app_path = os.path.join(dist_dir, "TubeFlow.app")
+    app_path = os.path.join(dist_dir, "Video Downloader.app")
     
     # 1. Check if the app is built
     if not os.path.exists(app_path):
@@ -21,7 +21,7 @@ def create_dmg():
     os.makedirs(tmp_dmg_dir)
     
     # 3. Copy the app bundle
-    target_app_path = os.path.join(tmp_dmg_dir, "TubeFlow.app")
+    target_app_path = os.path.join(tmp_dmg_dir, "Video Downloader.app")
     print("Copying App bundle...")
     shutil.copytree(app_path, target_app_path, symlinks=True)
     
@@ -35,14 +35,14 @@ def create_dmg():
         subprocess.run(["ln", "-s", "/Applications", applications_symlink])
         
     # 5. Build the DMG file using macOS hdiutil
-    dmg_output_path = os.path.join(dist_dir, "TubeFlow.dmg")
+    dmg_output_path = os.path.join(dist_dir, "Video Downloader.dmg")
     if os.path.exists(dmg_output_path):
         os.remove(dmg_output_path)
         
     print("Generating DMG file...")
     cmd = [
         "hdiutil", "create",
-        "-volname", "TubeFlow Installer",
+        "-volname", "Video Downloader Installer",
         "-srcfolder", tmp_dmg_dir,
         "-ov",
         "-format", "UDZO",

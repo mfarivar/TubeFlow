@@ -1,0 +1,28 @@
+# Virtual environment
+.venv/
+env/
+venv/
+ENV/
+
+# Python cache
+__pycache__/
+*.py[cod]
+*$py.class
+
+# PyInstaller / Packaging build files
+build/
+dist/
+*.spec
+
+# Media outputs and test files
+*.mp4
+*.mp3
+scratch_downloads/
+trimmed_test_out.mp4
+
+# OS generated files
+.DS_Store
+.DS_Store?
+ehthumbs.db
+Icon?
+Thumbs.db

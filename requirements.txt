@@ -1,0 +1,11 @@
+# Core Web View Window
+pywebview>=6.2.1
+
+# Extraction and Scraping Engine
+yt-dlp>=2026.3.17
+
+# TLS Impersonation for scraping protection bypass (e.g. TikTok)
+curl_cffi>=0.11.4
+
+# Build and Compilation (development only)
+pyinstaller>=6.20.0

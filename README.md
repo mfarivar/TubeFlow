@@ -47,8 +47,8 @@ To run or build the application from source, you will need:
 
 1. **Clone the repository**:
    ```bash
-   git clone https://github.com/mfarivar/video-downloader.git
-   cd video-downloader
+   git clone https://github.com/mfarivar/TubeFlow.git
+   cd TubeFlow
    ```
 
 2. **Set up a virtual environment**:

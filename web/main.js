@@ -1,4 +1,4 @@
-// Frontend Javascript for Video Downloader
+// Frontend Javascript for TubeFlow Downloader
 
 document.addEventListener('DOMContentLoaded', () => {
   // Elements

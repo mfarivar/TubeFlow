@@ -1,4 +1,4 @@
-# 📹 Video Downloader
+# 📹 TubeFlow
 
 [![macOS Support](https://img.shields.io/badge/platform-macOS-blueviolet.svg?style=flat-sq)](https://apple.com)
 [![Python Version](https://img.shields.io/badge/python-3.13%2B-blue.svg?style=flat-sq)](https://python.org)
@@ -7,7 +7,7 @@
 
 A sleek, high-performance, native macOS desktop client for downloading video and audio from YouTube, YouTube Music, and TikTok. Built with a stunning dark-mode glassmorphic interface, it features automatic clipboard monitoring, custom segment trimming, sequential batch downloads, and automatic album art metadata embedding for MP3s.
 
-![Video Downloader Desktop UI](screenshot.png)
+![TubeFlow Desktop UI](screenshot.png)
 
 ---
 
@@ -75,15 +75,15 @@ If you want to package the source files into a compiled desktop application (`.a
 
 1. **Compile with PyInstaller**:
    ```bash
-   .venv/bin/pyinstaller --clean -y VideoDownloader.spec
+   .venv/bin/pyinstaller --clean -y TubeFlow.spec
    ```
-   This will output `Video Downloader.app` in the `dist/` directory.
+   This will output `TubeFlow.app` in the `dist/` directory.
 
 2. **Generate the DMG Installer**:
    ```bash
    .venv/bin/python build_dmg.py
    ```
-   This will generate **`Video Downloader.dmg`** in the `dist/` directory, which you can open and drag-and-drop into your `/Applications` folder.
+   This will generate **`TubeFlow.dmg`** in the `dist/` directory, which you can open and drag-and-drop into your `/Applications` folder.
 
 ---
 

@@ -17,7 +17,7 @@ import webview
 import yt_dlp
 from yt_dlp.utils import download_range_func
 
-class VideoDownloaderAPI:
+class TubeFlowAPI:
     def __init__(self):
         self.window = None
         self._cancelled = False
@@ -75,7 +75,7 @@ class VideoDownloaderAPI:
 
     def get_download_folder(self):
         """Loads the configured download folder path, defaulting to ~/Downloads."""
-        config_file = os.path.expanduser('~/.videodownloader_config.json')
+        config_file = os.path.expanduser('~/.tubeflow_config.json')
         default_folder = os.path.expanduser('~/Downloads')
         if not os.path.exists(config_file):
             return default_folder
@@ -88,7 +88,7 @@ class VideoDownloaderAPI:
 
     def _save_download_folder(self, folder_path):
         """Saves the configured download folder path to the local config file."""
-        config_file = os.path.expanduser('~/.videodownloader_config.json')
+        config_file = os.path.expanduser('~/.tubeflow_config.json')
         try:
             config = {}
             if os.path.exists(config_file):
@@ -115,7 +115,7 @@ class VideoDownloaderAPI:
 
     def get_history(self):
         """Loads and returns download history from the local JSON file."""
-        history_file = os.path.expanduser('~/.videodownloader_history.json')
+        history_file = os.path.expanduser('~/.tubeflow_history.json')
         if not os.path.exists(history_file):
             return []
         try:
@@ -139,7 +139,7 @@ class VideoDownloaderAPI:
 
     def remove_from_history(self, item_id):
         """Removes a single item from history."""
-        history_file = os.path.expanduser('~/.videodownloader_history.json')
+        history_file = os.path.expanduser('~/.tubeflow_history.json')
         if not os.path.exists(history_file):
             return False
         try:
@@ -154,7 +154,7 @@ class VideoDownloaderAPI:
 
     def clear_history(self):
         """Clears all items in history."""
-        history_file = os.path.expanduser('~/.videodownloader_history.json')
+        history_file = os.path.expanduser('~/.tubeflow_history.json')
         try:
             with open(history_file, 'w', encoding='utf-8') as f:
                 json.dump([], f, indent=2)
@@ -172,7 +172,7 @@ class VideoDownloaderAPI:
 
     def _add_to_history(self, title, filename, filepath, url, format_type):
         """Helper to append a successful download to the history file."""
-        history_file = os.path.expanduser('~/.videodownloader_history.json')
+        history_file = os.path.expanduser('~/.tubeflow_history.json')
         history = []
         if os.path.exists(history_file):
             try:
@@ -393,11 +393,11 @@ def main():
         
     html_file = os.path.join(web_dir, 'index.html')
 
-    api = VideoDownloaderAPI()
+    api = TubeFlowAPI()
     
     # Create the native macOS desktop window
     window = webview.create_window(
-        title='Video Downloader',
+        title='TubeFlow Downloader',
         url=html_file,
         js_api=api,
         width=840,

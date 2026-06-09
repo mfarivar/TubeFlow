@@ -21,7 +21,7 @@ exe = EXE(
     a.scripts,
     [],
     exclude_binaries=True,
-    name='VideoDownloader',
+    name='TubeFlow',
     debug=False,
     bootloader_ignore_signals=False,
     strip=False,
@@ -41,11 +41,11 @@ coll = COLLECT(
     strip=False,
     upx=True,
     upx_exclude=[],
-    name='VideoDownloader',
+    name='TubeFlow',
 )
 app = BUNDLE(
     coll,
-    name='Video Downloader.app',
+    name='TubeFlow.app',
     icon='logo.icns',
     bundle_identifier=None,
 )

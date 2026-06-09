@@ -409,6 +409,7 @@ document.addEventListener('DOMContentLoaded', () => {
     dlProgressPercent.innerText = '0%';
     dlProgressSpeed.innerText = '0 MB/s';
     dlProgressEta.innerText = 'ETA: --:--';
+    dlProgressFill.classList.remove('processing-pulse');
     
     downloadOverlay.classList.remove('hidden');
     
@@ -433,11 +434,24 @@ document.addEventListener('DOMContentLoaded', () => {
           pct = 0;
           const interval = setInterval(() => {
             pct += 10;
-            window.updateProgress(pct, "8.4 MB/s", "00:03", currentItem, target.length);
-            if (pct >= 100) {
+            if (pct < 100) {
+              window.updateProgress(pct, "8.4 MB/s", "00:03", currentItem, target.length);
+            } else {
               clearInterval(interval);
-              currentItem++;
-              setTimeout(runMockItem, 500);
+              window.updateProgress(100, "", "Processing...", currentItem, target.length);
+              
+              // Simulate a postprocessor step
+              setTimeout(() => {
+                window.updatePostProcessing(
+                  target.length > 1 ? `Processing item ${currentItem} of ${target.length}` : "Processing...",
+                  "Extracting audio track..."
+                );
+                
+                setTimeout(() => {
+                  currentItem++;
+                  setTimeout(runMockItem, 500);
+                }, 1000);
+              }, 500);
             }
           }, 200);
           
@@ -493,10 +507,23 @@ document.addEventListener('DOMContentLoaded', () => {
         dlStatusFilename.innerText = activeUrls[currentIdx - 1];
       }
     }
+    if (percent < 100) {
+      dlProgressFill.classList.remove('processing-pulse');
+    }
     dlProgressFill.style.width = `${percent}%`;
     dlProgressPercent.innerText = `${percent}%`;
     dlProgressSpeed.innerText = speedStr;
-    dlProgressEta.innerText = `ETA: ${etaStr}`;
+    dlProgressEta.innerText = (etaStr === 'Processing...' || etaStr === '--:--') ? etaStr : `ETA: ${etaStr}`;
+  };
+
+  window.updatePostProcessing = function(statusTitle, stepName) {
+    dlStatusTitle.innerText = statusTitle;
+    dlStatusFilename.innerText = stepName;
+    dlProgressFill.style.width = '100%';
+    dlProgressPercent.innerText = '100%';
+    dlProgressSpeed.innerText = '';
+    dlProgressEta.innerText = 'Processing...';
+    dlProgressFill.classList.add('processing-pulse');
   };
 
   // --- Clipboard Monitoring & Auto-Detection ---
